@@ -17,7 +17,7 @@
   (let [all (map #(hash-map :orig % :diff (- 2020 %)) inputs)
         agg (into #{} (map #(- 2020 %) inputs))]
     (as-> all a
-         (filter #(contains? agg (:orig %)) a)
+         (filter #(agg (:orig %)) a)
          (first a)
          (* (:orig a) (:diff a)))))
 
