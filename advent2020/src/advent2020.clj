@@ -5,7 +5,7 @@
 (defn- load-input-1 []
   (map #(Integer/parseInt %)
     (with-open [rdr (clojure.java.io/reader
-                      (str (get-working-dir) "/input1.txt"))]
+                      (.toString (clojure.java.io/resource "input1.txt")))]
       (doall (line-seq rdr)))))
 
 (comment (println (slurp (str (get-working-dir) "/input1.txt"))) (get-working-dir))
@@ -27,5 +27,6 @@
         agg (into #{} (map #(- 2020 %) inputs))]
     agg))
 
+(comment)
 (comment (solve-1 (load-input-1)))
 (comment (map #(+ (:orig %) (:diff %)) (solve-1 (load-input-1))))
